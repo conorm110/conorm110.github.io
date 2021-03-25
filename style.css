@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong');
+
+img.pfp{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+
+}
+body {
+    background-color: #CED3DC;
+    font-family: "Trirong", serif;
+}
+div.contentText {
+    font-size: 18px;
+}
+table.projectsTable{
+    border-width: 5px;
+    border-color: #000;
+    border-style: solid;
+}
+.dark{
+    background-color: black;
+    color: white;
+    
+}
+.centerTH {
+    text-align: center;
+}
+iframe{
+    border-width:0px;
+}
+
+#master {
+	display: block;
+}
+
+#master:hover + #warning {
+	display: block;
+}
+
+#warning {
+    color: red;
+	display: none;
+  text-align: center;
+}

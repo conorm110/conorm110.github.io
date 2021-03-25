@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Games</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Conor Mika</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="career.html">Career</a></li>
+      <li class="active"><a href="games.html">Games</a></li>
+      <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Projects <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="https://github.com/conorm110/TeensyVGA">TeensyVGA</a></li>
+          <li><a href="https://github.com/conorm110/VGA-Demo-Verilog">FGPA VGA</a></li>
+          <li><a href="https://github.com/conorm110/Facial-Recognition-Csharp">Face Detection</a></li>
+          <li><a href="https://github.com/conorm110/Basic-Chat-Bot">Chatbot</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+  
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10">
+            <iframe src="https://i.simmer.io/@cjmika/bootstrapportfoliogame" width="900px" height="600px" id="changeLoc"></iframe>
+        </div>
+        <div class="col-lg-2">
+            <h2>Instructions</h2>
+            <ul>
+                <li>Click inside the game area</li>
+                <li>Use WASD to move around</li>
+                <li>Space bar is used to jump</li>
+                <li>Hold space against vertical surface to jump very high</li>
+            </ul>
+            <br>
+            <button class="btn btn-secondary" id="master" onClick="choose()">Debug Mode</button>
+            <span class="btn btn-secondary" id="warning">WARNING: WILL BREAK IFRAME</span>
+            <br>
+            <input type="text" id="key" value=" " style="display:none">
+        </div>
+    </div>
+    
+</div>
+<script>
+    function choose(){
+        document.getElementById('changeLoc').src = "http://localhost/iframegame.html"; // For devs only, loads local version to prevent calling ip from host
+    }
+    
+    function isSiteOnline(url,callback) {
+        // try to load favicon
+        var timer = setTimeout(function(){
+            // timeout after 5 seconds
+            callback(false);
+        },5000)
+        var img = document.createElement("img");
+        img.onload = function() { // pass if loads
+            clearTimeout(timer);
+            callback(true);
+        }
+        img.onerror = function() { // fail if no load
+            clearTimeout(timer);
+            callback(false);
+        }
+        img.src = url+"/favicon.ico";
+    }
+    
+    function startreq(){
+        isSiteOnline("http://98.32.187.220/iframegame.html",function(found){ // Checks if main ip loaded
+        if(found) {}
+        else {
+            window.alert("Error loading from default IP. Press OK to load special IP");
+            isSiteOnline("http://localhost/iframegame.html",function(found){ // Checks if at wrong loc
+                if(found) {
+                    window.alert("Load into debug mode");
+                }
+                else{
+                    window.alert("Server is down or connection error");
+                }
+            })
+            
+        }
+    })
+}
+</script>
+</script>
+</body>
+</html>
